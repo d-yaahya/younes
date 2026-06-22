@@ -919,7 +919,119 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
 }
 
 
+/* === Mobile clean hero fixes === */
 
+/* تثبيت النص المتحرك ومنع الذبذبة */
+.typed-text::after {
+  display: none !important;
+}
+
+.gradient-text.typed-text {
+  min-width: auto !important;
+}
+
+/* تحسين شكل الهيرو في الجوال ومنع تداخل الصورة مع كرت المميزات */
+@media (max-width: 760px) {
+  .hero {
+    min-height: auto !important;
+    padding-top: 34px !important;
+    padding-bottom: 45px !important;
+    overflow: visible !important;
+  }
+
+  .hero-grid {
+    gap: 28px !important;
+  }
+
+  .hero-visual {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    min-height: auto !important;
+    margin-top: 18px !important;
+    overflow: visible !important;
+  }
+
+  .profile-shell {
+    width: min(330px, 86vw) !important;
+    aspect-ratio: 1 / 1 !important;
+    padding: 12px !important;
+    border-radius: 32px !important;
+  }
+
+  .profile-ring {
+    inset: 10px !important;
+    border-radius: 26px !important;
+  }
+
+  .profile-img {
+    border-radius: 24px !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+  }
+
+  .floating-badge {
+    animation: none !important;
+    min-width: 118px !important;
+    padding: 10px 12px !important;
+    border-radius: 16px !important;
+  }
+
+  .badge-top {
+    top: -16px !important;
+    right: 10px !important;
+  }
+
+  .badge-bottom {
+    display: none !important;
+  }
+
+  .dashboard-card {
+    position: relative !important;
+    right: auto !important;
+    bottom: auto !important;
+    translate: none !important;
+    width: min(100%, 360px) !important;
+    margin: 18px auto 0 !important;
+    padding: 14px !important;
+    border-radius: 24px !important;
+    z-index: 6 !important;
+    backdrop-filter: blur(16px) !important;
+  }
+
+  .dash-head {
+    margin-bottom: 12px !important;
+  }
+
+  .dash-row {
+    gap: 8px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .dash-row div {
+    padding: 10px !important;
+    border-radius: 16px !important;
+  }
+
+  .dash-row p {
+    font-size: .74rem !important;
+  }
+
+  .dash-row strong {
+    font-size: 1.15rem !important;
+  }
+
+  .bar-chart {
+    height: 82px !important;
+  }
+
+  .scroll-hint {
+    display: none !important;
+  }
+}
+
+/* === End Mobile clean hero fixes === */
 
 /* stop typing animation and page jumping */
 .typed-text::after,
@@ -948,101 +1060,12 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
 }
 
 
-/* === Stable mobile no-touch-jitter reset === */
+/* === Mobile hero final layout === */
 @media (max-width: 760px) {
-  html {
-    width: 100% !important;
-    min-height: 100% !important;
-    overflow-x: hidden !important;
-    scroll-behavior: auto !important;
-  }
-
-  body {
-    width: 100% !important;
-    min-height: 100% !important;
-    overflow-x: hidden !important;
-    position: static !important;
-    touch-action: pan-y !important;
-    -webkit-overflow-scrolling: touch !important;
-    background: linear-gradient(180deg, #07111f 0%, #0b1730 100%) !important;
-  }
-
-  body::before,
-  .noise,
-  .cursor-glow,
-  .hero-bg,
-  .orb,
-  .grid-glow,
-  .scroll-hint {
-    display: none !important;
-    content: none !important;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-    will-change: auto !important;
-  }
-
-  .site-header {
-    position: static !important;
-    top: auto !important;
-    z-index: 20 !important;
-    background: #07111f !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    transform: none !important;
-  }
-
-  .nav {
-    min-height: 72px !important;
-  }
-
-  .nav-links {
-    position: absolute !important;
-    top: 72px !important;
-    left: 14px !important;
-    right: 14px !important;
-    display: none !important;
-    transform: none !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-
-  .nav-links.open {
-    display: grid !important;
-  }
-
-  main,
-  section,
-  .section,
-  .hero,
-  .hero-grid,
-  .hero-content,
-  .hero-visual {
-    transform: none !important;
-    filter: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    overflow: visible !important;
-  }
-
-  .section {
-    padding: 72px 0 !important;
-  }
-
   .hero {
-    display: block !important;
-    height: auto !important;
     min-height: auto !important;
-    max-height: none !important;
-    padding: 22px 0 42px !important;
-    contain: layout paint !important;
+    padding: 22px 0 38px !important;
+    overflow: hidden !important;
   }
 
   .hero .container {
@@ -1053,64 +1076,30 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
   .hero-grid {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
     gap: 24px !important;
-  }
-
-  .hero-content {
-    width: 100% !important;
-    text-align: right !important;
-  }
-
-  .hero-content h1 {
-    min-height: auto !important;
-    font-size: clamp(2.15rem, 9vw, 3.25rem) !important;
-    line-height: 1.18 !important;
-    letter-spacing: -1px !important;
-    margin-bottom: 14px !important;
-  }
-
-  .typed-text::after,
-  .fixed-hero-word::after {
-    display: none !important;
-    content: none !important;
-  }
-
-  .fixed-hero-word {
-    display: block !important;
-    width: fit-content !important;
-    white-space: nowrap !important;
-    margin-top: 4px !important;
+    align-items: center !important;
   }
 
   .hero-visual {
     width: 100% !important;
-    height: auto !important;
     min-height: auto !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    padding-top: 18px !important;
-    margin-top: 0 !important;
+    margin-top: 10px !important;
+    padding-top: 28px !important;
+    overflow: visible !important;
   }
 
   .profile-shell {
-    width: min(272px, 76vw) !important;
+    width: min(292px, 78vw) !important;
     height: auto !important;
     aspect-ratio: 1 / 1 !important;
-    margin: 0 auto !important;
     padding: 10px !important;
     border-radius: 30px !important;
-    transform: none !important;
-    filter: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-
-  .profile-shell::before {
-    display: none !important;
-    content: none !important;
+    margin: 0 auto !important;
+    z-index: 3 !important;
   }
 
   .profile-ring {
@@ -1124,22 +1113,28 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
     object-fit: cover !important;
     object-position: center top !important;
     border-radius: 24px !important;
-    transform: none !important;
-    filter: none !important;
   }
 
   .floating-badge {
-    min-width: 108px !important;
-    padding: 8px 11px !important;
+    animation: none !important;
+    padding: 9px 12px !important;
     border-radius: 16px !important;
+    min-width: 112px !important;
     transform: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    z-index: 7 !important;
+  }
+
+  .floating-badge small {
+    font-size: .72rem !important;
+  }
+
+  .floating-badge strong {
+    font-size: .88rem !important;
   }
 
   .badge-top {
-    top: 6px !important;
-    right: 8px !important;
+    top: 10px !important;
+    right: 12px !important;
   }
 
   .badge-bottom {
@@ -1148,19 +1143,25 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
 
   .dashboard-card {
     position: relative !important;
-    top: auto !important;
     right: auto !important;
     left: auto !important;
     bottom: auto !important;
-    width: min(308px, 86vw) !important;
-    margin: 14px auto 0 !important;
-    padding: 12px !important;
-    border-radius: 22px !important;
+    top: auto !important;
     transform: none !important;
     translate: none !important;
-    filter: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    width: min(330px, 88vw) !important;
+    margin: 16px auto 0 !important;
+    padding: 13px !important;
+    border-radius: 22px !important;
+    z-index: 4 !important;
+  }
+
+  .dash-head {
+    margin-bottom: 10px !important;
+  }
+
+  .dash-head span {
+    font-size: .78rem !important;
   }
 
   .dash-row {
@@ -1172,7 +1173,7 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
 
   .dash-row div {
     padding: 9px 8px !important;
-    border-radius: 14px !important;
+    border-radius: 15px !important;
   }
 
   .dash-row p {
@@ -1185,23 +1186,181 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
   }
 
   .bar-chart {
-    height: 64px !important;
+    height: 68px !important;
     gap: 8px !important;
+    align-items: end !important;
   }
 
-  .bar-chart span {
+  .bar-chart i {
+    border-radius: 12px 12px 4px 4px !important;
+  }
+
+  .scroll-hint {
+    display: none !important;
+  }
+
+  .hero-content {
+    text-align: right !important;
+    width: 100% !important;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.15rem, 9vw, 3.35rem) !important;
+    line-height: 1.16 !important;
+    min-height: auto !important;
+    margin-bottom: 14px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .profile-shell {
+    width: min(272px, 76vw) !important;
+  }
+
+  .dashboard-card {
+    width: min(318px, 88vw) !important;
+    margin-top: 14px !important;
+  }
+
+  .badge-top {
+    right: 8px !important;
+  }
+}
+/* === End mobile hero final layout === */
+
+
+/* === Mobile scroll stability fix === */
+html {
+  scroll-behavior: auto !important;
+}
+
+body {
+  overflow-x: hidden !important;
+}
+
+@media (max-width: 760px) {
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    scroll-behavior: auto !important;
+    overscroll-behavior-y: auto !important;
+  }
+
+  body {
+    position: relative !important;
+    touch-action: pan-y !important;
+  }
+
+  /* Prevent mobile browser address-bar height changes from shaking hero */
+  .hero {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: hidden !important;
     transform: none !important;
+  }
+
+  /* Stop floating and parallax motion on mobile */
+  .hero-visual,
+  .profile-shell,
+  .profile-ring,
+  .profile-img,
+  .floating-badge,
+  .dashboard-card,
+  .dash-row,
+  .bar-chart,
+  .bar-chart i {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+
+  /* Stop reveal-on-scroll from changing page height */
+  .reveal,
+  .reveal.active,
+  .reveal.show,
+  .fade-up,
+  .fade-up.active,
+  .fade-up.show,
+  [data-reveal],
+  [data-aos] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+    will-change: auto !important;
+  }
+
+  /* Avoid sticky/fixed layout jumping on mobile */
+  .scroll-hint {
+    display: none !important;
+  }
+
+  section {
+    overflow: hidden !important;
+  }
+}
+/* === End mobile scroll stability fix === */
+
+
+/* === Final mobile no jitter fix === */
+@media (max-width: 760px) {
+  html {
+    scroll-behavior: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  body {
+    overflow-x: hidden !important;
+    position: static !important;
+    touch-action: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* أهم سبب للتذبذب في الجوال: fixed + blur */
+  body::before,
+  .noise,
+  .cursor-glow,
+  .orb,
+  .grid-glow {
+    display: none !important;
+  }
+
+  /* إلغاء sticky في الجوال لأنه يسبب رجّة مع شريط المتصفح */
+  .site-header {
+    position: relative !important;
+    top: auto !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(7, 17, 31, .96) !important;
+  }
+
+  /* تعطيل كل المؤثرات الثقيلة في الجوال */
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
   }
 
   .reveal,
   .reveal.visible,
   .tilt,
   .magnetic,
+  .profile-shell,
+  .profile-shell::before,
+  .profile-ring,
+  .profile-img,
+  .floating-badge,
+  .dashboard-card,
   .metric-card,
-  .about-panel,
   .project-card,
   .service-card,
-  .timeline,
   .contact-card {
     opacity: 1 !important;
     visibility: visible !important;
@@ -1209,23 +1368,46 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
     translate: none !important;
     rotate: 0deg !important;
     filter: none !important;
+    will-change: auto !important;
+  }
+
+  .profile-shell::before {
+    display: none !important;
+  }
+
+  .dashboard-card,
+  .profile-shell,
+  .floating-badge,
+  .metric-card,
+  .about-panel,
+  .project-card,
+  .service-card,
+  .timeline,
+  .contact-card {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
 
-  a,
-  button {
-    touch-action: manipulation !important;
-  }
-}
-
-@media (max-width: 420px) {
-  .profile-shell {
-    width: min(258px, 74vw) !important;
+  .hero {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: hidden !important;
   }
 
-  .dashboard-card {
-    width: min(300px, 86vw) !important;
+  .hero-visual {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  .scroll-hint {
+    display: none !important;
+  }
+
+  .nav-links {
+    position: absolute !important;
+    top: 78px !important;
   }
 }
-/* === End stable mobile no-touch-jitter reset === */
+/* === End final mobile no jitter fix === */
