@@ -44,3 +44,66 @@ document.querySelectorAll(".typed-text").forEach((el) => {
   el.textContent = el.textContent || stableText;
   el.removeAttribute("data-words");
 });
+
+
+// === Counters animation ===
+const counterItems = document.querySelectorAll("[data-count]");
+
+function animateCounter(counter) {
+  if (!counter || counter.dataset.done === "true") return;
+
+  const target = Number(counter.dataset.count || "0");
+  const duration = 1200;
+  const startTime = performance.now();
+
+  counter.dataset.done = "true";
+
+  function update(now) {
+    const progress = Math.min((now - startTime) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = Math.round(target * eased);
+
+    counter.textContent = String(value);
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      counter.textContent = String(target);
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+if (counterItems.length) {
+  if ("IntersectionObserver" in window) {
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.25,
+      rootMargin: "0px 0px -20px 0px"
+    });
+
+    counterItems.forEach((counter) => counterObserver.observe(counter));
+  } else {
+    counterItems.forEach(animateCounter);
+  }
+
+  // Fallback for mobile browsers if observer delays
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      counterItems.forEach((counter) => {
+        const rect = counter.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          animateCounter(counter);
+        }
+      });
+    }, 450);
+  });
+}
+// === End counters animation ===
