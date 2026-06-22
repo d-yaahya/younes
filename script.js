@@ -2,7 +2,6 @@
 const navLinks = document.querySelector('#navLinks');
 const year = document.querySelector('#year');
 const glow = document.querySelector('.cursor-glow');
-const typed = document.querySelector('.typed-text');
 const navAnchors = [...document.querySelectorAll('.nav-links a[href^="#"]')];
 const sections = [...document.querySelectorAll('section[id]')];
 
@@ -56,11 +55,6 @@ const countObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('[data-count]').forEach((el) => countObserver.observe(el));
 
-if (typed) {
-  typed.textContent = 'قرارات واضحة';
-  typed.removeAttribute('data-words');
-}
-
 window.addEventListener('pointermove', (event) => {
   if (!glow) return;
   glow.style.left = `${event.clientX}px`;
@@ -107,4 +101,5 @@ const activeObserver = new IntersectionObserver((entries) => {
 }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
 
 sections.forEach((section) => activeObserver.observe(section));
+
 

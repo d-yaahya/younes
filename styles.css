@@ -1032,3 +1032,31 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
 }
 
 /* === End Mobile clean hero fixes === */
+
+
+/* === Stop typing jump fix === */
+.typed-text::after,
+.fixed-hero-word::after {
+  content: none !important;
+  display: none !important;
+}
+
+.fixed-hero-word {
+  display: inline-block !important;
+  white-space: nowrap !important;
+  min-width: max-content !important;
+}
+
+@media (max-width: 760px) {
+  .hero-content h1 {
+    line-height: 1.18 !important;
+    margin-bottom: 18px !important;
+  }
+
+  .fixed-hero-word {
+    display: block !important;
+    width: fit-content !important;
+    margin-top: 4px !important;
+  }
+}
+/* === End Stop typing jump fix === */

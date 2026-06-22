@@ -1,4 +1,4 @@
-const menuButton = document.querySelector('.menu-toggle');
+﻿const menuButton = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('#navLinks');
 const year = document.querySelector('#year');
 const glow = document.querySelector('.cursor-glow');
@@ -57,39 +57,8 @@ const countObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('[data-count]').forEach((el) => countObserver.observe(el));
 
 if (typed) {
-  const words = typed.dataset.words.split(',').map((w) => w.trim()).filter(Boolean);
-  let wordIndex = 0;
-  let charIndex = 0;
-  let deleting = false;
-
-  function typeLoop() {
-    const current = words[wordIndex];
-    typed.textContent = current.slice(0, charIndex);
-
-    if (!deleting && charIndex < current.length) {
-      charIndex += 1;
-      setTimeout(typeLoop, 70);
-      return;
-    }
-
-    if (!deleting && charIndex === current.length) {
-      deleting = true;
-      setTimeout(typeLoop, 1200);
-      return;
-    }
-
-    if (deleting && charIndex > 0) {
-      charIndex -= 1;
-      setTimeout(typeLoop, 36);
-      return;
-    }
-
-    deleting = false;
-    wordIndex = (wordIndex + 1) % words.length;
-    setTimeout(typeLoop, 260);
-  }
-
-  setTimeout(typeLoop, 500);
+  typed.textContent = 'قرارات واضحة';
+  typed.removeAttribute('data-words');
 }
 
 window.addEventListener('pointermove', (event) => {
@@ -138,3 +107,4 @@ const activeObserver = new IntersectionObserver((entries) => {
 }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
 
 sections.forEach((section) => activeObserver.observe(section));
+
