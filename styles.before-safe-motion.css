@@ -948,7 +948,7 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
 }
 
 
-/* === Stable mobile with safe motion === */
+/* === Stable mobile no-touch-jitter reset === */
 @media (max-width: 760px) {
   html {
     width: 100% !important;
@@ -978,6 +978,15 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
     content: none !important;
   }
 
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+    will-change: auto !important;
+  }
+
   .site-header {
     position: static !important;
     top: auto !important;
@@ -985,6 +994,7 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
     background: #07111f !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    transform: none !important;
   }
 
   .nav {
@@ -997,16 +1007,15 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
     left: 14px !important;
     right: 14px !important;
     display: none !important;
+    transform: none !important;
     opacity: 1 !important;
     pointer-events: auto !important;
-    transform: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
 
   .nav-links.open {
     display: grid !important;
-    animation: mobileMenuIn .22s ease-out both !important;
   }
 
   main,
@@ -1016,6 +1025,8 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
   .hero-grid,
   .hero-content,
   .hero-visual {
+    transform: none !important;
+    filter: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     overflow: visible !important;
@@ -1091,17 +1102,15 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
     margin: 0 auto !important;
     padding: 10px !important;
     border-radius: 30px !important;
+    transform: none !important;
+    filter: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    animation: mobileSoftPop .55s ease-out both !important;
   }
 
   .profile-shell::before {
-    display: block !important;
-    content: "" !important;
-    opacity: .38 !important;
-    filter: blur(10px) !important;
-    animation: spin 12s linear infinite !important;
+    display: none !important;
+    content: none !important;
   }
 
   .profile-ring {
@@ -1115,6 +1124,7 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
     object-fit: cover !important;
     object-position: center top !important;
     border-radius: 24px !important;
+    transform: none !important;
     filter: none !important;
   }
 
@@ -1122,9 +1132,9 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
     min-width: 108px !important;
     padding: 8px 11px !important;
     border-radius: 16px !important;
+    transform: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    animation: mobileFloatSoft 4.8s ease-in-out infinite alternate !important;
   }
 
   .badge-top {
@@ -1146,11 +1156,11 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
     margin: 14px auto 0 !important;
     padding: 12px !important;
     border-radius: 22px !important;
+    transform: none !important;
     translate: none !important;
     filter: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    animation: mobileSoftPop .65s ease-out both !important;
   }
 
   .dash-row {
@@ -1180,60 +1190,32 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
   }
 
   .bar-chart span {
-    transform-origin: bottom !important;
-    animation: barGrow 1.2s ease-out both !important;
+    transform: none !important;
   }
 
+  .reveal,
+  .reveal.visible,
+  .tilt,
+  .magnetic,
   .metric-card,
   .about-panel,
   .project-card,
   .service-card,
   .timeline,
-  .contact-card,
-  .dashboard-card,
-  .profile-shell {
+  .contact-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    translate: none !important;
+    rotate: 0deg !important;
+    filter: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-  }
-
-  .reveal {
-    opacity: 0 !important;
-    visibility: visible !important;
-    transform: translate3d(0, 18px, 0) !important;
-    filter: none !important;
-    transition: opacity .48s ease, transform .48s ease !important;
-    will-change: opacity, transform !important;
-  }
-
-  .reveal.visible {
-    opacity: 1 !important;
-    transform: translate3d(0, 0, 0) !important;
-    filter: none !important;
-  }
-
-  .brand-mark {
-    animation: logoPulse 3.6s ease-in-out infinite !important;
-  }
-
-  .status-pill i {
-    animation: statusBlink 1.5s ease-in-out infinite !important;
-  }
-
-  .project-media::after {
-    animation: shine 5.2s ease-in-out infinite !important;
-  }
-
-  .contact-card::before {
-    animation: mobileFloatSoft 6s ease-in-out infinite alternate !important;
   }
 
   a,
   button {
     touch-action: manipulation !important;
-  }
-
-  .btn:active {
-    transform: scale(.985) !important;
   }
 }
 
@@ -1246,35 +1228,4 @@ h3 { margin-bottom: 10px; line-height: 1.35; }
     width: min(300px, 86vw) !important;
   }
 }
-
-@keyframes mobileSoftPop {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 16px, 0) scale(.98);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
-
-@keyframes mobileMenuIn {
-  from {
-    opacity: 0;
-    transform: translate3d(0, -8px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes mobileFloatSoft {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(0, -6px, 0);
-  }
-}
-/* === End stable mobile with safe motion === */
+/* === End stable mobile no-touch-jitter reset === */

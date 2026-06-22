@@ -18,29 +18,13 @@ navLinks?.querySelectorAll("a").forEach((link) => {
   });
 });
 
-const revealItems = document.querySelectorAll(".reveal");
+/* ظهور العناصر بدون حركة تسبب اهتزاز */
+document.querySelectorAll(".reveal").forEach((el) => {
+  el.classList.add("visible");
+});
 
-if ("IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.08,
-    rootMargin: "0px 0px -40px 0px"
-  });
-
-  revealItems.forEach((el) => revealObserver.observe(el));
-} else {
-  revealItems.forEach((el) => el.classList.add("visible"));
-}
-
-const stableText = "\u0642\u0631\u0627\u0631\u0627\u062A \u0648\u0627\u0636\u062D\u0629";
-
+/* تثبيت أي نص كان متحرك */
 document.querySelectorAll(".typed-text").forEach((el) => {
-  el.textContent = el.textContent || stableText;
+  el.textContent = el.textContent || "قرارات واضحة";
   el.removeAttribute("data-words");
 });
